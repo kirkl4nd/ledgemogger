@@ -1,6 +1,6 @@
 use uuid::Uuid;
 
-use crate::transaction::{Balance, Transaction};
+use crate::{balance::Balance, transaction::Transaction};
 
 pub struct PurchaseInput {
     pub title: String,

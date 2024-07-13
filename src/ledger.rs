@@ -6,10 +6,10 @@ use crate::{payment::{Payment, PaymentInput}, purchase::{Purchase, PurchaseInput
 
 #[derive(Debug)]
 pub struct Ledger {
-    users: Vec<User>,
-    purchases: Vec<Purchase>,
-    payments: Vec<Payment>,
-    transactions: Vec<Transaction>,
+    pub users: Vec<User>,
+    pub purchases: Vec<Purchase>,
+    pub payments: Vec<Payment>,
+    pub transactions: Vec<Transaction>,
 }
 
 impl Ledger {
@@ -22,7 +22,7 @@ impl Ledger {
         }
     }
 
-    /// ### Adding and looking up users
+    /// ### Adding and looking up users, and user id validation
 
     pub fn add_user(&mut self, user_input: UserInput) -> Result<(), Box<dyn Error>> {
         // if username already exists, return an error
@@ -50,6 +50,10 @@ impl Ledger {
 
     pub fn lookup_user_by_username(&self, username: &str) -> Option<User> {
         self.users.iter().find(|u| u.username == username).cloned()
+    }
+
+    pub fn validate_user_id(&self, user_id: Uuid) -> bool {
+        self.users.iter().any(|u| u.id == user_id)
     }
 
     /// ### Adding and looking up purchases and transactions

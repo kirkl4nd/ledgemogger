@@ -2,11 +2,13 @@ use ledger::Ledger;
 use purchase::{Purchase, PurchaseInput};
 use user::UserInput;
 
+mod balance;
 mod ledger;
 mod payment;
 mod purchase;
 mod transaction;
 mod user;
+mod simplify;
 
 fn main() {
     let mut ledger: Ledger = Ledger::new();
@@ -32,6 +34,17 @@ fn main() {
 
     ledger.add_purchase(purchase_input_1);
 
+
+    let purchase_input_2 = PurchaseInput {
+        title: "Chicken and rice".to_owned(),
+        amount: 20.00,
+        purchaser: kaburrill_id,
+        payers: vec![kaburrill_id, mhinrichs_id],
+    };
+
+    ledger.add_purchase(purchase_input_2);
+
     println!("{:?}", ledger);
 
+    ledger.display_balances(ledger.simplify_balances());
 }

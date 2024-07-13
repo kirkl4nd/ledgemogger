@@ -1,7 +1,6 @@
-use crate::transaction::Balance;
 use uuid::Uuid;
 
-use crate::transaction::Transaction;
+use crate::{balance::Balance, transaction::Transaction};
 
 pub struct PaymentInput {
     pub amount: f64,

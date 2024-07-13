@@ -1,11 +1,6 @@
 use uuid::Uuid;
 
-#[derive(Debug, Clone)]
-pub struct Balance {
-    pub from_user: Uuid,
-    pub to_user: Uuid,
-    pub amount: f64,
-}
+use crate::balance::Balance;
 
 #[derive(Debug, Clone)]
 pub struct Transaction {
