@@ -1,11 +1,13 @@
 use uuid::Uuid;
 
+#[derive(Debug, Clone)]
 pub struct Balance {
     pub from_user: Uuid,
     pub to_user: Uuid,
     pub amount: f64,
 }
 
+#[derive(Debug, Clone)]
 pub struct Transaction {
     pub id: Uuid,
     pub balance_diffs: Vec<Balance>,
